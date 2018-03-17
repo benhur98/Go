@@ -1,1 +1,49 @@
+//MADE BY M.BENHUR
+//phone : +91-9843184815
+//email : benhurrodriguez98@gmail.com
 
+//main package  definition
+package main
+
+//importing libraries
+//fmt <- [Standard I/O routines]
+//net/http <- making http request and responses
+//io/ioutil <- simple I/O utility functions
+import (
+    "fmt"
+    "net/http"
+    "io/ioutil"
+    )
+
+//main function - ENTRY point of go	
+func main(){
+	//make GET request to API
+	////returns response and error response  if any
+    response,error:= http.Get("http://ip.jsontest.com/")
+    
+	//check for no errors in making HTTP connection
+    if error != nil {
+		//info update 
+        fmt.Println("Error in making HTTP request")
+        }
+	//wait in bg until the response closes		
+    defer response.Body.Close()
+	
+	//read the content of response in bytes
+    content,_ := ioutil.ReadAll(response.Body)
+	
+	//parse the byte response  to string of characters
+	resp_str := string(content)
+	
+	//create  a runes(slices/list) 
+	runes :=[]rune(resp_str)
+	
+	//display the response in string format
+	fmt.Println("Your IP from API - ",string(runes[8:23]))
+	
+	//info update
+	fmt.Println("Press<ENTER> to continue")
+	
+	//halt O/P screen
+	fmt.Scanln()
+		}
