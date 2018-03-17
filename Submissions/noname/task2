@@ -1,22 +1,41 @@
+//denotes package main
 package main
 
+//imports necessary libraries
+//fmt -> fast alternative IO operations
+//strconv -> numeric convertions from string to int
 import (
 	"fmt"
 	"strconv"
 )
-func thr(b []int,x int){
 
-    for i:=0;i<5;i++ {
+//function named thr
+//INPUTS <- integer array named b , integer named x
+//acts as thread handler
+//outputs the sum of 5 integer inputs
+func thr(b []int,x int){
+//for loop implementation to loop 5 times in a row
+    for i:=0;i<5;i++ 
+    	{
         x = x + b[i]
         }
+    //prints sum  in o/p stream
     fmt.Println("The sum is - ",x)
     
 }
 
+//main function - program entry point
+//variables in scope
+////-integer array - b
+////-integer - x
 func main() {
 var b []int
 x:=0
+
+//info update in print
 fmt.Println("-- Enter 5 numbers --")
+//This logic loops for 5 turns , fetches input as string from standare input stream,
+//converts string to integer and appends to a slice(a list)
 for i := 1;i<6;i++ {
     fmt.Println("Enter ",i,"number :")
 	var input string
@@ -24,7 +43,10 @@ for i := 1;i<6;i++ {
 	in,_:= strconv.Atoi(input)
     b=append(b,in)
 }
+//starts a go threaded subroutine to perform addtion process in background
 go thr(b,x)
+//info update
 fmt.Println("Thread Started")
+//halts output screen to exit
 fmt.Scanln()
 }
