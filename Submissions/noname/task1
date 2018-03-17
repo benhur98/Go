@@ -1,6 +1,19 @@
+//denotes main package in which go runs
 package main
+
+//import libraries here
 import ( "fmt" ) 
+
+//main function executes  first
 func main() {
+
+//Println(input) <- input displays on cmd screen
 fmt.Println("Hello World !") 
-fmt.Scanln("Press <Enter> to exit")
+
+//Println(input) <-input displays on cmd screen
+//[INFO]
+fmt.Println("Press <Enter> to exit")
+
+//Scanln() <- Waits for raw enter [ Halts the output screen ]
+fmt.Scanln()
 }
