@@ -1,0 +1,29 @@
+package main
+
+import (
+    "io"
+    "net/http"
+    "fmt"
+    )
+func resp(a http.ResponseWriter, b *http.Request){
+    io.WriteString(a,"<html><body><h1>Welcome</h1></body></html>")
+    }
+func resp_2(a http.ResponseWriter, b *http.Request){
+    io.WriteString(a,"<html><body><h1>Welcome to home page</h1></body></html>")
+    }
+func thr(){
+          http.HandleFunc("/",resp)
+        http.ListenAndServe(":8000",nil)
+    }
+func thr_2(){
+          http.HandleFunc("/home",resp_2)
+        http.ListenAndServe(":8000",nil)
+    }
+func main(){
+    
+    go thr()
+    go thr_2()
+   fmt.Scanln()
+       
+
+}
