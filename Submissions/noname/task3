@@ -1,30 +1,53 @@
-package main
+//MADE BY M.BENHUR
+//phone : +91-9843184815
+//email : benhurrodriguez98@gmail.com
 
+//refers main package to work on
+package main
+//import necessary libraries here
 import (
+//io <- basic IO primitives
     "io"
+//net/http <- http client and server implementations    
     "net/http"
+//standard I/O routines    
     "fmt"
     )
+
+//callback function
+//input http response w.r.t client , request socket pathway
 func resp(a http.ResponseWriter, b *http.Request){
     io.WriteString(a,"<html><body><h1>Welcome</h1></body></html>")
     }
+
+//callback function
+//input http response w.r.t client , request socket pathway
 func resp_2(a http.ResponseWriter, b *http.Request){
     io.WriteString(a,"<html><body><h1>Welcome to home page</h1></body></html>")
     }
-func thr(){
-          http.HandleFunc("/",resp)
-        http.ListenAndServe(":8000",nil)
-    }
-func thr_2(){
-          http.HandleFunc("/home",resp_2)
-        http.ListenAndServe(":8000",nil)
-    }
-func main(){
     
-    go thr()
-    go thr_2()
-    fmt.Println("Press <ENTER> to exit..")
-   fmt.Scanln()
-       
+//function thread for {/} path 
+//waits for connection at port 8000
+func thr(){
+        http.HandleFunc("/",resp)
+        http.ListenAndServe(":8000",nil)
+    }
+    
+//function thread for {/home} path 
+//waits for connection at port 8000
+func thr_2(){
+        http.HandleFunc("/home",resp_2)
+        http.ListenAndServe(":8000",nil)
+    }
 
+//main function - go program entry point    
+func main(){
+    //start go subroutine in path "/"
+    go thr()
+    //start go subroutine in path "/home"
+    go thr_2()
+    //info update
+    fmt.Println("Press <ENTER> to exit..")
+    //halts output screen
+    fmt.Scanln()
 }
