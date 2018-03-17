@@ -23,6 +23,7 @@ func main(){
     
     go thr()
     go thr_2()
+    fmt.Println("Press <ENTER> to exit..")
    fmt.Scanln()
        
 
