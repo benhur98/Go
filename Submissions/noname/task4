@@ -1,0 +1,81 @@
+//MADE BY M.BENHUR
+//phone : +91-9843184815
+//email : benhurrodriguez98@gmail.com
+
+//main package  definition
+package main
+
+//importing libraries
+//fmt <- [Standard I/O routines]
+//strings <- [in-built string manipulation functions]
+import (
+    "fmt"
+    "strings"
+    )
+
+//check_heading(input) - input <- string of input/line in text to parse and check
+////output - returns identifier string
+func check_heading(m string) string{
+	
+	//method to check Heading 1
+    if strings.HasPrefix(m,"#") {
+        return "H1"
+        }
+    //method to check Heading 2
+	if strings.HasPrefix(m,"##"){
+        return "H2"
+        }
+    //method to check bold faced
+	if strings.HasPrefix(m,"**"){
+        if strings.HasSuffix(m,"**"){
+            return "BOLD"
+            }
+        }
+    return "NONE"
+	}
+func chkk(check string){
+    if check == "H1" {
+        fmt.Println("Found Heading H1")
+        }
+    
+    if check == "H2" {
+        fmt.Println("Found Heading H2")
+        }
+    
+    if check == "BOLD" {
+        fmt.Println("Found BOLD faced string")
+        }
+	if check == "NONE" {
+	fmt.Println("NONE found..")
+		}
+    }
+	
+//main function - ENTRY point of go	
+func main(){
+	//string variable  declarations for local working
+	var x,parser_string,parser_string_2,parser_string_3 string
+    
+	//sample input data for  H1
+	parser_string ="# Heading1"
+	
+	//sample input data for  H2
+    parser_string_2 ="## Heading2"
+	
+	//sample input data for  bold
+    parser_string_3 = "**bold_font**"
+
+	//Function call and making output - [START]	
+    x = check_heading(parser_string)
+    chkk(x)
+    
+    x = check_heading(parser_string_2)
+    chkk(x)
+
+    x = check_heading(parser_string_3)
+    chkk(x)
+	// - [END]
+
+	//halts output screen
+    fmt.Scanln()
+    
+    }
