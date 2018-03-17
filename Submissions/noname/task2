@@ -1,0 +1,30 @@
+package main
+
+import (
+	"fmt"
+	"strconv"
+)
+func thr(b []int,x int){
+
+    for i:=0;i<5;i++ {
+        x = x + b[i]
+        }
+    fmt.Println("The sum is - ",x)
+    
+}
+
+func main() {
+var b []int
+x:=0
+fmt.Println("-- Enter 5 numbers --")
+for i := 1;i<6;i++ {
+    fmt.Println("Enter ",i,"number :")
+	var input string
+	fmt.Scanln(&input)
+	in,_:= strconv.Atoi(input)
+    b=append(b,in)
+}
+go thr(b,x)
+fmt.Println("Thread Started")
+fmt.Scanln()
+}
